@@ -184,19 +184,18 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
 .btn-cal:hover{background:var(--accent);color:#fff}
 .btn-cal svg{width:13px;height:13px;fill:currentColor;flex-shrink:0}
 
-/* ITINERARIO */
-#itinerario{padding:80px 24px;background:var(--bg);text-align:center}
-.itin-cards{display:flex;flex-direction:column;gap:0;margin-top:36px;max-width:380px;margin-left:auto;margin-right:auto}
-.itin-card{display:flex;align-items:stretch;gap:0;position:relative}
-.itin-card-left{display:flex;flex-direction:column;align-items:center;width:52px;flex-shrink:0}
-.itin-node{width:36px;height:36px;border-radius:50%;background:var(--dark);border:2px solid var(--copper);display:flex;align-items:center;justify-content:center;flex-shrink:0;z-index:1;box-shadow:0 2px 12px rgba(58,79,107,.18)}
-.itin-node svg{width:15px;height:15px;stroke:var(--copper-light);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.itin-line{flex:1;width:1px;background:linear-gradient(to bottom,var(--copper),rgba(206,160,48,.15));opacity:.4}
-.itin-card:last-child .itin-line{display:none}
-.itin-body{flex:1;background:var(--card);border-radius:16px;padding:16px 18px;margin:0 0 12px 0;border:1px solid rgba(138,155,101,.12);box-shadow:0 3px 16px rgba(58,79,107,.05);text-align:left}
-.itin-time{font-family:'Playfair Display',serif;font-size:13px;color:var(--copper);letter-spacing:2px;margin-bottom:4px;font-style:italic}
-.itin-title{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--dark);font-weight:600;margin-bottom:3px}
-.itin-desc{font-family:'Jost',sans-serif;font-weight:200;font-size:12px;color:var(--accent2);letter-spacing:.3px;line-height:1.5}
+/* ITINERARIO V3 — Centered Glowing Timeline */
+#itinerario{padding:80px 24px;background:var(--surface);text-align:center;position:relative;overflow:visible}
+.itv3{position:relative;display:flex;flex-direction:column;align-items:center;padding:10px 0 10px;margin-top:8px}
+.itv3-track{position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;width:1px;z-index:0;background:linear-gradient(to bottom,transparent 0%,rgba(206,160,48,.30) 10%,rgba(138,155,101,.22) 45%,rgba(206,160,48,.28) 80%,transparent 100%)}
+.itv3-glow{position:absolute;left:50%;transform:translateX(-50%);top:0;width:5px;height:110px;background:linear-gradient(to bottom,transparent,rgba(206,160,48,.6) 20%,rgba(138,155,101,.9) 50%,rgba(206,160,48,.6) 80%,transparent);filter:blur(3px);border-radius:6px;z-index:1;pointer-events:none}
+.itv3-item{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:30px 16px 4px;width:100%}
+.itv3-gem{width:9px;height:9px;background:linear-gradient(135deg,#DFA8A0 30%,#CEA030);transform:rotate(45deg);border-radius:2px;box-shadow:0 0 0 4px rgba(206,160,48,.10),0 0 18px rgba(206,160,48,.40);margin-bottom:18px;flex-shrink:0}
+.itv3-gem-sage{background:linear-gradient(135deg,#8A9B65 30%,#CEA030);box-shadow:0 0 0 4px rgba(138,155,101,.12),0 0 18px rgba(138,155,101,.42)}
+.itv3-gem-blue{background:linear-gradient(135deg,#9DBAC8 30%,#3A4F6B);box-shadow:0 0 0 4px rgba(157,186,200,.12),0 0 18px rgba(157,186,200,.42)}
+.itv3-time{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;letter-spacing:8px;color:var(--dark);line-height:1;margin-bottom:6px;text-indent:8px}
+.itv3-ev{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:rgba(58,79,107,.55);letter-spacing:3px;text-transform:uppercase;line-height:1.5;text-indent:3px}
+.itv3-item:last-child{padding-bottom:10px}
 
 /* DRESS CODE */
 #dresscode{padding:80px 28px;text-align:center;background:var(--surface)}
@@ -308,6 +307,24 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
 .ld-mono span{display:inline-block}
 .ld-tag{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;letter-spacing:3px;color:var(--accent);opacity:0}
 
+/* DRESSCODE — AVOID SWATCHES */
+.dc-avoid-label{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--copper);text-align:center;display:block;margin:20px 0 12px;opacity:.8}
+.dc-avoid-row{display:flex;justify-content:center;gap:22px;margin:0 0 10px}
+.dc-avoid-sw{display:flex;flex-direction:column;align-items:center;gap:7px}
+.dc-avoid-circle{width:34px;height:34px;border-radius:50%;position:relative;overflow:hidden;flex-shrink:0}
+.dc-avoid-circle svg{position:absolute;inset:0;width:100%;height:100%}
+.dc-avoid-lbl{font-family:'Jost',sans-serif;font-weight:200;font-size:9px;letter-spacing:.5px;color:var(--text);text-align:center;opacity:.7;max-width:56px;line-height:1.3}
+
+/* WATERCOLOR BOTANICALS */
+.wc{position:absolute;pointer-events:none;z-index:0;overflow:visible}
+#hero{overflow:hidden}
+#hero .wc{z-index:1}
+#quote{position:relative}
+#familiares{position:relative;overflow:visible}
+#dresscode{position:relative;overflow:visible}
+#itinerario{overflow:visible}
+.fam-grid,.fam-padrinos{position:relative;z-index:1}
+
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -330,6 +347,15 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
 
 <div class="wrap">
 
+  <!-- SVG DEFS ACUARELA (oculto) -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden">
+    <defs>
+      <filter id="wcS"><feGaussianBlur stdDeviation="1.4"/></filter>
+      <filter id="wcM"><feGaussianBlur stdDeviation="2.8"/></filter>
+      <filter id="wcL"><feGaussianBlur stdDeviation="5"/></filter>
+    </defs>
+  </svg>
+
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg"></div>
@@ -348,6 +374,72 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
       <span class="hero-groom rv">Miguel</span>
       <span class="hero-date rv">Piura, Perú</span>
     </div>
+    <!-- Botanicals hero -->
+    <div class="wc" style="bottom:40px;left:-18px;transform:rotate(15deg)">
+      <svg viewBox="0 0 160 220" width="160" height="220" fill="none" style="filter:blur(.4px)">
+        <path d="M55 210 C50 178 42 152 52 122 C56 110 66 103 74 114" stroke="#8A9B65" stroke-width="1.2" fill="none" opacity=".28" stroke-linecap="round"/>
+        <ellipse cx="50" cy="178" rx="10" ry="16" fill="#8A9B65" opacity=".17" transform="rotate(-38 50 178)" filter="url(#wcS)"/>
+        <ellipse cx="44" cy="158" rx="9" ry="15" fill="#8A9B65" opacity=".16" transform="rotate(-30 44 158)" filter="url(#wcS)"/>
+        <ellipse cx="48" cy="140" rx="9" ry="14" fill="#8A9B65" opacity=".14" transform="rotate(-44 48 140)" filter="url(#wcS)"/>
+        <ellipse cx="58" cy="126" rx="8" ry="13" fill="#8A9B65" opacity=".13" transform="rotate(-52 58 126)" filter="url(#wcS)"/>
+        <circle cx="80" cy="82" r="38" fill="#DFA8A0" opacity=".05" filter="url(#wcL)"/>
+        <ellipse cx="80" cy="56" rx="16" ry="22" fill="#DFA8A0" opacity=".13" filter="url(#wcS)"/>
+        <ellipse cx="100" cy="66" rx="15" ry="20" fill="#DFA8A0" opacity=".12" transform="rotate(38 100 66)" filter="url(#wcS)"/>
+        <ellipse cx="102" cy="88" rx="15" ry="20" fill="#DFA8A0" opacity=".13" transform="rotate(72 102 88)" filter="url(#wcS)"/>
+        <ellipse cx="85" cy="105" rx="16" ry="18" fill="#DFA8A0" opacity=".14" filter="url(#wcS)"/>
+        <ellipse cx="62" cy="97" rx="14" ry="20" fill="#DFA8A0" opacity=".12" transform="rotate(-72 62 97)" filter="url(#wcS)"/>
+        <ellipse cx="60" cy="72" rx="15" ry="20" fill="#DFA8A0" opacity=".13" transform="rotate(-38 60 72)" filter="url(#wcS)"/>
+        <ellipse cx="80" cy="67" rx="11" ry="15" fill="#DFA8A0" opacity=".19"/>
+        <ellipse cx="88" cy="75" rx="10" ry="14" fill="#EDD0C8" opacity=".18" transform="rotate(22 88 75)"/>
+        <ellipse cx="85" cy="88" rx="10" ry="13" fill="#DFA8A0" opacity=".20" transform="rotate(50 85 88)"/>
+        <ellipse cx="73" cy="90" rx="10" ry="13" fill="#DFA8A0" opacity=".19" transform="rotate(-50 73 90)"/>
+        <ellipse cx="70" cy="75" rx="10" ry="14" fill="#EDD0C8" opacity=".18" transform="rotate(-22 70 75)"/>
+        <circle cx="80" cy="80" r="10" fill="#DFA8A0" opacity=".22" filter="url(#wcS)"/>
+        <circle cx="80" cy="80" r="5" fill="#CEA030" opacity=".20"/>
+        <ellipse cx="118" cy="50" rx="10" ry="14" fill="#EDD0C8" opacity=".12" filter="url(#wcS)"/>
+        <ellipse cx="118" cy="40" rx="7" ry="10" fill="#DFA8A0" opacity=".16" transform="rotate(-8 118 40)"/>
+        <ellipse cx="126" cy="46" rx="7" ry="10" fill="#DFA8A0" opacity=".14" transform="rotate(28 126 46)"/>
+        <ellipse cx="122" cy="56" rx="7" ry="9" fill="#DFA8A0" opacity=".14" transform="rotate(60 122 56)"/>
+        <ellipse cx="110" cy="58" rx="7" ry="9" fill="#EDD0C8" opacity=".14" transform="rotate(-60 110 58)"/>
+        <ellipse cx="108" cy="46" rx="7" ry="10" fill="#DFA8A0" opacity=".14" transform="rotate(-28 108 46)"/>
+        <circle cx="118" cy="50" r="3.5" fill="#CEA030" opacity=".18"/>
+        <path d="M80 100 Q76 132 68 190" stroke="#8A9B65" stroke-width="1.2" opacity=".20" stroke-linecap="round"/>
+        <path d="M118 60 Q122 88 120 120" stroke="#8A9B65" stroke-width="1" opacity=".17" stroke-linecap="round"/>
+        <path d="M74 138 Q60 132 59 142 Q69 145 74 138Z" fill="#8A9B65" opacity=".16"/>
+        <path d="M72 158 Q86 152 87 162 Q76 165 72 158Z" fill="#8A9B65" opacity=".14"/>
+        <circle cx="65" cy="170" r="1.8" fill="#CEA030" opacity=".18"/>
+        <circle cx="78" cy="178" r="1.5" fill="#CEA030" opacity=".15"/>
+        <circle cx="105" cy="110" r="1.5" fill="#CEA030" opacity=".16"/>
+      </svg>
+    </div>
+    <div class="wc" style="bottom:40px;right:-18px;transform:rotate(-12deg)">
+      <svg viewBox="0 0 160 220" width="160" height="220" fill="none" style="filter:blur(.4px);transform:scaleX(-1)">
+        <path d="M55 210 C50 178 42 152 52 122 C56 110 66 103 74 114" stroke="#8A9B65" stroke-width="1.2" fill="none" opacity=".26" stroke-linecap="round"/>
+        <ellipse cx="50" cy="178" rx="10" ry="16" fill="#8A9B65" opacity=".16" transform="rotate(-38 50 178)" filter="url(#wcS)"/>
+        <ellipse cx="44" cy="158" rx="9" ry="15" fill="#8A9B65" opacity=".15" transform="rotate(-30 44 158)" filter="url(#wcS)"/>
+        <ellipse cx="48" cy="140" rx="9" ry="14" fill="#8A9B65" opacity=".13" transform="rotate(-44 48 140)" filter="url(#wcS)"/>
+        <ellipse cx="58" cy="126" rx="8" ry="13" fill="#8A9B65" opacity=".12" transform="rotate(-52 58 126)" filter="url(#wcS)"/>
+        <circle cx="80" cy="75" r="36" fill="#9DBAC8" opacity=".05" filter="url(#wcL)"/>
+        <ellipse cx="80" cy="52" rx="16" ry="21" fill="#EDD0C8" opacity=".13" filter="url(#wcS)"/>
+        <ellipse cx="99" cy="62" rx="15" ry="20" fill="#DFA8A0" opacity=".12" transform="rotate(38 99 62)" filter="url(#wcS)"/>
+        <ellipse cx="101" cy="84" rx="15" ry="19" fill="#DFA8A0" opacity=".12" transform="rotate(72 101 84)" filter="url(#wcS)"/>
+        <ellipse cx="84" cy="101" rx="16" ry="18" fill="#EDD0C8" opacity=".13" filter="url(#wcS)"/>
+        <ellipse cx="61" cy="93" rx="14" ry="20" fill="#DFA8A0" opacity=".11" transform="rotate(-72 61 93)" filter="url(#wcS)"/>
+        <ellipse cx="59" cy="68" rx="15" ry="20" fill="#DFA8A0" opacity=".12" transform="rotate(-38 59 68)" filter="url(#wcS)"/>
+        <ellipse cx="80" cy="64" rx="11" ry="15" fill="#EDD0C8" opacity=".18"/>
+        <ellipse cx="87" cy="72" rx="10" ry="14" fill="#DFA8A0" opacity=".17" transform="rotate(22 87 72)"/>
+        <ellipse cx="84" cy="85" rx="10" ry="13" fill="#DFA8A0" opacity=".19" transform="rotate(50 84 85)"/>
+        <ellipse cx="73" cy="87" rx="10" ry="13" fill="#EDD0C8" opacity=".18" transform="rotate(-50 73 87)"/>
+        <ellipse cx="70" cy="72" rx="10" ry="14" fill="#DFA8A0" opacity=".17" transform="rotate(-22 70 72)"/>
+        <circle cx="80" cy="77" r="10" fill="#EDD0C8" opacity=".20" filter="url(#wcS)"/>
+        <circle cx="80" cy="77" r="5" fill="#CEA030" opacity=".18"/>
+        <path d="M80 97 Q76 130 68 188" stroke="#8A9B65" stroke-width="1.2" opacity=".19" stroke-linecap="round"/>
+        <path d="M74 136 Q60 130 59 140 Q69 143 74 136Z" fill="#8A9B65" opacity=".15"/>
+        <circle cx="65" cy="168" r="1.8" fill="#CEA030" opacity=".17"/>
+        <circle cx="78" cy="175" r="1.5" fill="#CEA030" opacity=".14"/>
+      </svg>
+    </div>
+
     <div class="scroll-hint" id="scrollHint">
       <span class="scroll-hint-txt">Desliza</span>
       <span class="scroll-hint-arrow"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
@@ -436,6 +528,43 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
       <path d="M0 80Q60 50 120 80" stroke="#CEA030" stroke-width="1" fill="none"/>
       <path d="M8 65Q60 28 112 65" stroke="#CEA030" stroke-width=".7" fill="none"/>
     </svg>
+    <!-- Botanical quote left -->
+    <div class="wc" style="top:10px;left:-8px;opacity:.75">
+      <svg viewBox="0 0 90 180" width="90" height="180" fill="none" style="filter:blur(.5px)">
+        <path d="M45 170 C40 140 32 115 40 88 C44 76 56 70 62 82" stroke="#CEA030" stroke-width="1" fill="none" opacity=".22" stroke-linecap="round"/>
+        <ellipse cx="38" cy="140" rx="8" ry="14" fill="#CEA030" opacity=".14" transform="rotate(-32 38 140)" filter="url(#wcS)"/>
+        <ellipse cx="33" cy="120" rx="8" ry="13" fill="#CEA030" opacity=".13" transform="rotate(-25 33 120)" filter="url(#wcS)"/>
+        <ellipse cx="36" cy="103" rx="7" ry="12" fill="#8A9B65" opacity=".14" transform="rotate(-38 36 103)" filter="url(#wcS)"/>
+        <ellipse cx="44" cy="90" rx="7" ry="11" fill="#8A9B65" opacity=".13" transform="rotate(-48 44 90)" filter="url(#wcS)"/>
+        <ellipse cx="62" cy="42" rx="12" ry="16" fill="#DFA8A0" opacity=".15" filter="url(#wcS)"/>
+        <ellipse cx="62" cy="31" rx="8" ry="12" fill="#DFA8A0" opacity=".19" transform="rotate(-8 62 31)"/>
+        <ellipse cx="70" cy="38" rx="8" ry="11" fill="#DFA8A0" opacity=".17" transform="rotate(28 70 38)"/>
+        <ellipse cx="67" cy="49" rx="8" ry="10" fill="#EDD0C8" opacity=".18" transform="rotate(58 67 49)"/>
+        <ellipse cx="55" cy="50" rx="8" ry="10" fill="#DFA8A0" opacity=".16" transform="rotate(-58 55 50)"/>
+        <ellipse cx="53" cy="38" rx="8" ry="11" fill="#DFA8A0" opacity=".17" transform="rotate(-28 53 38)"/>
+        <circle cx="62" cy="40" r="4" fill="#CEA030" opacity=".18"/>
+        <path d="M62 54 Q58 75 48 120" stroke="#8A9B65" stroke-width="1" opacity=".17" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <!-- Botanical quote right -->
+    <div class="wc" style="top:10px;right:-8px;opacity:.75">
+      <svg viewBox="0 0 90 180" width="90" height="180" fill="none" style="filter:blur(.5px);transform:scaleX(-1)">
+        <path d="M45 170 C40 140 32 115 40 88 C44 76 56 70 62 82" stroke="#CEA030" stroke-width="1" fill="none" opacity=".20" stroke-linecap="round"/>
+        <ellipse cx="38" cy="140" rx="8" ry="14" fill="#CEA030" opacity=".13" transform="rotate(-32 38 140)" filter="url(#wcS)"/>
+        <ellipse cx="33" cy="120" rx="8" ry="13" fill="#CEA030" opacity=".12" transform="rotate(-25 33 120)" filter="url(#wcS)"/>
+        <ellipse cx="36" cy="103" rx="7" ry="12" fill="#8A9B65" opacity=".13" transform="rotate(-38 36 103)" filter="url(#wcS)"/>
+        <ellipse cx="44" cy="90" rx="7" ry="11" fill="#8A9B65" opacity=".12" transform="rotate(-48 44 90)" filter="url(#wcS)"/>
+        <ellipse cx="62" cy="42" rx="12" ry="16" fill="#9DBAC8" opacity=".14" filter="url(#wcS)"/>
+        <ellipse cx="62" cy="31" rx="8" ry="12" fill="#9DBAC8" opacity=".17" transform="rotate(-8 62 31)"/>
+        <ellipse cx="70" cy="38" rx="8" ry="11" fill="#DFA8A0" opacity=".15" transform="rotate(28 70 38)"/>
+        <ellipse cx="67" cy="49" rx="8" ry="10" fill="#9DBAC8" opacity=".16" transform="rotate(58 67 49)"/>
+        <ellipse cx="55" cy="50" rx="8" ry="10" fill="#DFA8A0" opacity=".14" transform="rotate(-58 55 50)"/>
+        <ellipse cx="53" cy="38" rx="8" ry="11" fill="#9DBAC8" opacity=".15" transform="rotate(-28 53 38)"/>
+        <circle cx="62" cy="40" r="4" fill="#CEA030" opacity=".16"/>
+        <path d="M62 54 Q58 75 48 120" stroke="#8A9B65" stroke-width="1" opacity=".15" stroke-linecap="round"/>
+      </svg>
+    </div>
+
     <span class="quote-mark rv">"</span>
     <p class="quote-txt rv">
       El amor florece en los rincones más inesperados,<br>
@@ -448,7 +577,58 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
   </section>
 
   <!-- FAMILIARES -->
-  <section id="familiares" class="rv">
+  <section id="familiares" class="rv" style="position:relative">
+    <!-- Botanical familiares top-left -->
+    <div class="wc" style="top:-10px;left:-12px">
+      <svg viewBox="0 0 130 130" width="130" height="130" fill="none" style="filter:blur(.4px)">
+        <path d="M10 120 C15 90 10 65 22 44 C28 34 40 28 48 38" stroke="#8A9B65" stroke-width="1.1" fill="none" opacity=".22" stroke-linecap="round"/>
+        <ellipse cx="14" cy="92" rx="9" ry="15" fill="#8A9B65" opacity=".15" transform="rotate(-35 14 92)" filter="url(#wcS)"/>
+        <ellipse cx="12" cy="73" rx="8" ry="14" fill="#8A9B65" opacity=".14" transform="rotate(-28 12 73)" filter="url(#wcS)"/>
+        <ellipse cx="15" cy="57" rx="8" ry="13" fill="#8A9B65" opacity=".13" transform="rotate(-40 15 57)" filter="url(#wcS)"/>
+        <circle cx="72" cy="52" r="28" fill="#DFA8A0" opacity=".05" filter="url(#wcL)"/>
+        <ellipse cx="72" cy="32" rx="13" ry="18" fill="#DFA8A0" opacity=".13" filter="url(#wcS)"/>
+        <ellipse cx="86" cy="40" rx="12" ry="16" fill="#DFA8A0" opacity=".12" transform="rotate(36 86 40)" filter="url(#wcS)"/>
+        <ellipse cx="89" cy="56" rx="12" ry="16" fill="#EDD0C8" opacity=".13" transform="rotate(70 89 56)" filter="url(#wcS)"/>
+        <ellipse cx="75" cy="68" rx="13" ry="14" fill="#DFA8A0" opacity=".13" filter="url(#wcS)"/>
+        <ellipse cx="57" cy="62" rx="11" ry="16" fill="#DFA8A0" opacity=".12" transform="rotate(-70 57 62)" filter="url(#wcS)"/>
+        <ellipse cx="56" cy="44" rx="12" ry="16" fill="#DFA8A0" opacity=".12" transform="rotate(-36 56 44)" filter="url(#wcS)"/>
+        <ellipse cx="72" cy="40" rx="9" ry="13" fill="#DFA8A0" opacity=".18"/>
+        <ellipse cx="79" cy="47" rx="8" ry="11" fill="#EDD0C8" opacity=".17" transform="rotate(22 79 47)"/>
+        <ellipse cx="77" cy="58" rx="8" ry="11" fill="#DFA8A0" opacity=".18" transform="rotate(50 77 58)"/>
+        <ellipse cx="66" cy="59" rx="8" ry="11" fill="#EDD0C8" opacity=".17" transform="rotate(-50 66 59)"/>
+        <ellipse cx="63" cy="47" rx="8" ry="11" fill="#DFA8A0" opacity=".17" transform="rotate(-22 63 47)"/>
+        <circle cx="72" cy="50" r="8" fill="#DFA8A0" opacity=".22" filter="url(#wcS)"/>
+        <circle cx="72" cy="50" r="4" fill="#CEA030" opacity=".20"/>
+        <path d="M72 66 Q68 88 56 118" stroke="#8A9B65" stroke-width="1.1" opacity=".18" stroke-linecap="round"/>
+        <circle cx="52" cy="95" r="1.5" fill="#CEA030" opacity=".16"/>
+        <circle cx="64" cy="102" r="1.5" fill="#CEA030" opacity=".14"/>
+      </svg>
+    </div>
+    <!-- Botanical familiares top-right -->
+    <div class="wc" style="top:-10px;right:-12px">
+      <svg viewBox="0 0 130 130" width="130" height="130" fill="none" style="filter:blur(.4px);transform:scaleX(-1)">
+        <path d="M10 120 C15 90 10 65 22 44 C28 34 40 28 48 38" stroke="#8A9B65" stroke-width="1.1" fill="none" opacity=".20" stroke-linecap="round"/>
+        <ellipse cx="14" cy="92" rx="9" ry="15" fill="#8A9B65" opacity=".14" transform="rotate(-35 14 92)" filter="url(#wcS)"/>
+        <ellipse cx="12" cy="73" rx="8" ry="14" fill="#8A9B65" opacity=".13" transform="rotate(-28 12 73)" filter="url(#wcS)"/>
+        <ellipse cx="15" cy="57" rx="8" ry="13" fill="#8A9B65" opacity=".12" transform="rotate(-40 15 57)" filter="url(#wcS)"/>
+        <circle cx="72" cy="52" r="28" fill="#9DBAC8" opacity=".05" filter="url(#wcL)"/>
+        <ellipse cx="72" cy="32" rx="13" ry="18" fill="#EDD0C8" opacity=".12" filter="url(#wcS)"/>
+        <ellipse cx="86" cy="40" rx="12" ry="16" fill="#DFA8A0" opacity=".11" transform="rotate(36 86 40)" filter="url(#wcS)"/>
+        <ellipse cx="89" cy="56" rx="12" ry="16" fill="#9DBAC8" opacity=".10" transform="rotate(70 89 56)" filter="url(#wcS)"/>
+        <ellipse cx="75" cy="68" rx="13" ry="14" fill="#EDD0C8" opacity=".12" filter="url(#wcS)"/>
+        <ellipse cx="57" cy="62" rx="11" ry="16" fill="#DFA8A0" opacity=".11" transform="rotate(-70 57 62)" filter="url(#wcS)"/>
+        <ellipse cx="56" cy="44" rx="12" ry="16" fill="#EDD0C8" opacity=".12" transform="rotate(-36 56 44)" filter="url(#wcS)"/>
+        <ellipse cx="72" cy="40" rx="9" ry="13" fill="#EDD0C8" opacity=".17"/>
+        <ellipse cx="79" cy="47" rx="8" ry="11" fill="#DFA8A0" opacity=".16" transform="rotate(22 79 47)"/>
+        <ellipse cx="77" cy="58" rx="8" ry="11" fill="#EDD0C8" opacity=".17" transform="rotate(50 77 58)"/>
+        <ellipse cx="66" cy="59" rx="8" ry="11" fill="#DFA8A0" opacity=".16" transform="rotate(-50 66 59)"/>
+        <ellipse cx="63" cy="47" rx="8" ry="11" fill="#EDD0C8" opacity=".16" transform="rotate(-22 63 47)"/>
+        <circle cx="72" cy="50" r="8" fill="#EDD0C8" opacity=".20" filter="url(#wcS)"/>
+        <circle cx="72" cy="50" r="4" fill="#CEA030" opacity=".18"/>
+        <path d="M72 66 Q68 88 56 118" stroke="#8A9B65" stroke-width="1.1" opacity=".16" stroke-linecap="round"/>
+      </svg>
+    </div>
+
     <p class="eyebrow">Con la bendición de</p>
     <h2 class="script-title">Nuestras Familias</h2>
     <p class="section-sub">Unidos por el amor</p>
@@ -552,66 +732,93 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
     <p class="eyebrow">Programa del Día</p>
     <h2 class="script-title">Itinerario</h2>
     <p class="section-sub">Un día que recordaremos siempre</p>
-    <div class="itin-cards" id="itinCards">
-      <div class="itin-card itin-entry">
-        <div class="itin-card-left">
-          <div class="itin-node"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-          <div class="itin-line"></div>
-        </div>
-        <div class="itin-body">
-          <div class="itin-time">11:00 AM</div>
-          <div class="itin-title">Ceremonia Religiosa</div>
-          <div class="itin-desc">Iglesia Ntra. Sra. del Carmen · Piura</div>
-        </div>
+    <div class="itv3">
+      <div class="itv3-track"></div>
+      <div class="itv3-glow" id="itvGlow"></div>
+
+      <div class="itv3-item rv">
+        <div class="itv3-gem"></div>
+        <div class="itv3-time">11:00 AM</div>
+        <div class="itv3-ev">Ceremonia Religiosa</div>
       </div>
-      <div class="itin-card itin-entry">
-        <div class="itin-card-left">
-          <div class="itin-node"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-          <div class="itin-line"></div>
-        </div>
-        <div class="itin-body">
-          <div class="itin-time">1:00 PM</div>
-          <div class="itin-title">Recepción &amp; Bienvenida</div>
-          <div class="itin-desc">Villa Palmeras · Piura</div>
-        </div>
+
+      <div class="itv3-item rv">
+        <div class="itv3-gem itv3-gem-sage"></div>
+        <div class="itv3-time">1:00 PM</div>
+        <div class="itv3-ev">Recepción &amp; Bienvenida</div>
       </div>
-      <div class="itin-card itin-entry">
-        <div class="itin-card-left">
-          <div class="itin-node"><svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
-          <div class="itin-line"></div>
-        </div>
-        <div class="itin-body">
-          <div class="itin-time">1:00 PM</div>
-          <div class="itin-title">Cóctel de Bienvenida</div>
-          <div class="itin-desc">Brindis · aperitivos · fotografías</div>
-        </div>
+
+      <div class="itv3-item rv">
+        <div class="itv3-gem itv3-gem-blue"></div>
+        <div class="itv3-time">1:00 PM</div>
+        <div class="itv3-ev">Cóctel de Bienvenida</div>
       </div>
-      <div class="itin-card itin-entry">
-        <div class="itin-card-left">
-          <div class="itin-node"><svg viewBox="0 0 24 24"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></div>
-          <div class="itin-line"></div>
-        </div>
-        <div class="itin-body">
-          <div class="itin-time">1:30 PM</div>
-          <div class="itin-title">Vals &amp; Primer Baile</div>
-          <div class="itin-desc">El momento más romántico de la velada</div>
-        </div>
+
+      <div class="itv3-item rv">
+        <div class="itv3-gem itv3-gem-sage"></div>
+        <div class="itv3-time">1:30 PM</div>
+        <div class="itv3-ev">Vals &amp; Primer Baile</div>
       </div>
-      <div class="itin-card itin-entry">
-        <div class="itin-card-left">
-          <div class="itin-node"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        </div>
-        <div class="itin-body">
-          <div class="itin-time">¡Toda la Tarde!</div>
-          <div class="itin-title">¡Fiesta!</div>
-          <div class="itin-desc">Música, baile y celebración sin fin</div>
-        </div>
+
+      <div class="itv3-item rv">
+        <div class="itv3-gem"></div>
+        <div class="itv3-time">¡Fiesta!</div>
+        <div class="itv3-ev">Música · baile · celebración</div>
       </div>
     </div>
   </section>
 
   <!-- DRESS CODE -->
-  <section id="dresscode" class="sec rv">
+  <section id="dresscode" class="sec rv" style="position:relative">
+    <!-- Botanical dresscode bottom corners -->
+    <div class="wc" style="bottom:-15px;left:-14px;transform:rotate(20deg)">
+      <svg viewBox="0 0 110 140" width="110" height="140" fill="none" style="filter:blur(.4px)">
+        <path d="M40 130 C35 100 28 78 36 55 C40 44 52 38 58 48" stroke="#8A9B65" stroke-width="1" fill="none" opacity=".24" stroke-linecap="round"/>
+        <ellipse cx="33" cy="100" rx="8" ry="13" fill="#8A9B65" opacity=".16" transform="rotate(-34 33 100)" filter="url(#wcS)"/>
+        <ellipse cx="29" cy="82" rx="7" ry="12" fill="#8A9B65" opacity=".15" transform="rotate(-27 29 82)" filter="url(#wcS)"/>
+        <ellipse cx="32" cy="67" rx="7" ry="11" fill="#8A9B65" opacity=".14" transform="rotate(-40 32 67)" filter="url(#wcS)"/>
+        <circle cx="68" cy="32" r="22" fill="#DFA8A0" opacity=".05" filter="url(#wcL)"/>
+        <ellipse cx="68" cy="16" rx="11" ry="15" fill="#DFA8A0" opacity=".14" filter="url(#wcS)"/>
+        <ellipse cx="80" cy="22" rx="10" ry="14" fill="#EDD0C8" opacity=".13" transform="rotate(35 80 22)" filter="url(#wcS)"/>
+        <ellipse cx="82" cy="36" rx="10" ry="14" fill="#DFA8A0" opacity=".13" transform="rotate(68 82 36)" filter="url(#wcS)"/>
+        <ellipse cx="69" cy="46" rx="11" ry="12" fill="#EDD0C8" opacity=".14" filter="url(#wcS)"/>
+        <ellipse cx="54" cy="40" rx="10" ry="14" fill="#DFA8A0" opacity=".12" transform="rotate(-68 54 40)" filter="url(#wcS)"/>
+        <ellipse cx="54" cy="25" rx="10" ry="14" fill="#DFA8A0" opacity=".13" transform="rotate(-35 54 25)" filter="url(#wcS)"/>
+        <ellipse cx="68" cy="23" rx="7" ry="10" fill="#DFA8A0" opacity=".19"/>
+        <ellipse cx="74" cy="30" rx="7" ry="10" fill="#EDD0C8" opacity=".18" transform="rotate(22 74 30)"/>
+        <ellipse cx="72" cy="39" rx="7" ry="9" fill="#DFA8A0" opacity=".19" transform="rotate(50 72 39)"/>
+        <ellipse cx="63" cy="40" rx="7" ry="9" fill="#EDD0C8" opacity=".18" transform="rotate(-50 63 40)"/>
+        <ellipse cx="61" cy="30" rx="7" ry="10" fill="#DFA8A0" opacity=".18" transform="rotate(-22 61 30)"/>
+        <circle cx="68" cy="31" r="6" fill="#DFA8A0" opacity=".22" filter="url(#wcS)"/>
+        <circle cx="68" cy="31" r="3" fill="#CEA030" opacity=".20"/>
+        <path d="M68 48 Q64 68 54 108" stroke="#8A9B65" stroke-width="1" opacity=".18" stroke-linecap="round"/>
+        <circle cx="48" cy="82" r="1.5" fill="#CEA030" opacity=".16"/>
+      </svg>
+    </div>
+    <div class="wc" style="bottom:-15px;right:-14px;transform:rotate(-20deg)">
+      <svg viewBox="0 0 110 140" width="110" height="140" fill="none" style="filter:blur(.4px);transform:scaleX(-1)">
+        <path d="M40 130 C35 100 28 78 36 55 C40 44 52 38 58 48" stroke="#8A9B65" stroke-width="1" fill="none" opacity=".22" stroke-linecap="round"/>
+        <ellipse cx="33" cy="100" rx="8" ry="13" fill="#8A9B65" opacity=".15" transform="rotate(-34 33 100)" filter="url(#wcS)"/>
+        <ellipse cx="29" cy="82" rx="7" ry="12" fill="#8A9B65" opacity=".14" transform="rotate(-27 29 82)" filter="url(#wcS)"/>
+        <ellipse cx="32" cy="67" rx="7" ry="11" fill="#8A9B65" opacity=".13" transform="rotate(-40 32 67)" filter="url(#wcS)"/>
+        <circle cx="68" cy="32" r="22" fill="#9DBAC8" opacity=".05" filter="url(#wcL)"/>
+        <ellipse cx="68" cy="16" rx="11" ry="15" fill="#9DBAC8" opacity=".12" filter="url(#wcS)"/>
+        <ellipse cx="80" cy="22" rx="10" ry="14" fill="#DFA8A0" opacity=".11" transform="rotate(35 80 22)" filter="url(#wcS)"/>
+        <ellipse cx="82" cy="36" rx="10" ry="14" fill="#9DBAC8" opacity=".11" transform="rotate(68 82 36)" filter="url(#wcS)"/>
+        <ellipse cx="69" cy="46" rx="11" ry="12" fill="#DFA8A0" opacity=".12" filter="url(#wcS)"/>
+        <ellipse cx="54" cy="40" rx="10" ry="14" fill="#9DBAC8" opacity=".11" transform="rotate(-68 54 40)" filter="url(#wcS)"/>
+        <ellipse cx="54" cy="25" rx="10" ry="14" fill="#DFA8A0" opacity=".12" transform="rotate(-35 54 25)" filter="url(#wcS)"/>
+        <ellipse cx="68" cy="23" rx="7" ry="10" fill="#9DBAC8" opacity=".17"/>
+        <ellipse cx="74" cy="30" rx="7" ry="10" fill="#DFA8A0" opacity=".16" transform="rotate(22 74 30)"/>
+        <ellipse cx="72" cy="39" rx="7" ry="9" fill="#9DBAC8" opacity=".17" transform="rotate(50 72 39)"/>
+        <ellipse cx="63" cy="40" rx="7" ry="9" fill="#DFA8A0" opacity=".16" transform="rotate(-50 63 40)"/>
+        <ellipse cx="61" cy="30" rx="7" ry="10" fill="#9DBAC8" opacity=".16" transform="rotate(-22 61 30)"/>
+        <circle cx="68" cy="31" r="6" fill="#9DBAC8" opacity=".20" filter="url(#wcS)"/>
+        <circle cx="68" cy="31" r="3" fill="#CEA030" opacity=".18"/>
+        <path d="M68 48 Q64 68 54 108" stroke="#8A9B65" stroke-width="1" opacity=".16" stroke-linecap="round"/>
+      </svg>
+    </div>
+
     <p class="eyebrow">Código de Vestimenta</p>
     <h2 class="script-title">Formal Elegante</h2>
     <p class="section-sub" style="margin-bottom:8px">¡Nos encantaría verte en tonos tierra y florales!</p>
@@ -647,6 +854,28 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
           </svg>
         </div>
         <div class="dc-col-ttl" style="margin-top:14px">Damas</div>
+      </div>
+    </div>
+
+    <span class="dc-avoid-label">Colores a evitar</span>
+    <div class="dc-avoid-row">
+      <div class="dc-avoid-sw">
+        <div class="dc-avoid-circle" style="background:#FFFFFF;box-shadow:0 0 0 1.5px rgba(0,0,0,.10)">
+          <svg viewBox="0 0 34 34"><line x1="9" y1="9" x2="25" y2="25" stroke="#CC2222" stroke-width="3" stroke-linecap="round"/><line x1="25" y1="9" x2="9" y2="25" stroke="#CC2222" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <span class="dc-avoid-lbl">Blanco</span>
+      </div>
+      <div class="dc-avoid-sw">
+        <div class="dc-avoid-circle" style="background:#CC2222">
+          <svg viewBox="0 0 34 34"><line x1="9" y1="9" x2="25" y2="25" stroke="rgba(255,255,255,.92)" stroke-width="3" stroke-linecap="round"/><line x1="25" y1="9" x2="9" y2="25" stroke="rgba(255,255,255,.92)" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <span class="dc-avoid-lbl">Rojo Intenso</span>
+      </div>
+      <div class="dc-avoid-sw">
+        <div class="dc-avoid-circle" style="background:#FFBBA5">
+          <svg viewBox="0 0 34 34"><line x1="9" y1="9" x2="25" y2="25" stroke="#7A3018" stroke-width="3" stroke-linecap="round"/><line x1="25" y1="9" x2="9" y2="25" stroke="#7A3018" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <span class="dc-avoid-lbl">Durazno Claro</span>
       </div>
     </div>
 
@@ -952,13 +1181,30 @@ function initAll(){
       scrollTrigger:{trigger:'#familiares',start:'top 85%',toggleActions:'play none none none'}});
   });
 
-  document.querySelectorAll('.itin-entry').forEach((el,i)=>{
-    gsap.fromTo(el,{x:-32,opacity:0},{x:0,opacity:1,duration:.65,ease:'power3.out',delay:i*.15,
-      scrollTrigger:{trigger:'#itinCards',start:'top 85%',toggleActions:'play none none none'}});
-    const node=el.querySelector('.itin-node');
-    if(node)gsap.fromTo(node,{scale:0,opacity:0},{scale:1,opacity:1,duration:.5,ease:'back.out(3)',delay:i*.15+.2,
-      scrollTrigger:{trigger:'#itinCards',start:'top 85%',toggleActions:'play none none none'}});
-  });
+  /* Itinerario V3 — centered glowing timeline */
+  (function(){
+    const glow=document.getElementById('itvGlow');
+    const section=document.getElementById('itinerario');
+    const items=document.querySelectorAll('.itv3-item');
+    if(glow&&section){
+      ScrollTrigger.create({trigger:section,start:'top 58%',end:'bottom 42%',scrub:1.8,
+        onUpdate:function(self){
+          const track=section.querySelector('.itv3-track');
+          if(!track)return;
+          const h=track.offsetHeight-55;
+          glow.style.top=(self.progress*h)+'px';
+        }
+      });
+    }
+    items.forEach(function(item){
+      const gem=item.querySelector('.itv3-gem');
+      if(gem)gsap.fromTo(gem,{scale:0,opacity:0},{scale:1,opacity:1,duration:.6,ease:'back.out(2.8)',
+        scrollTrigger:{trigger:item,start:'top 86%',once:true}});
+      const txts=[item.querySelector('.itv3-time'),item.querySelector('.itv3-ev')].filter(Boolean);
+      if(txts.length)gsap.fromTo(txts,{y:14,opacity:0},{y:0,opacity:1,duration:.8,ease:'power2.out',stagger:.08,
+        scrollTrigger:{trigger:item,start:'top 86%',once:true}});
+    });
+  })();
 
   document.querySelectorAll('.gift-option').forEach((el,i)=>{
     gsap.fromTo(el,{y:28,opacity:0},{y:0,opacity:1,duration:.7,ease:'power3.out',delay:i*.2,
