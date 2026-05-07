@@ -215,22 +215,40 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
 .no-kids{display:flex;align-items:center;gap:12px;background:rgba(206,160,48,.07);border:1px solid rgba(206,160,48,.2);border-radius:14px;padding:14px 18px;margin-top:22px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:var(--dark);text-align:left;line-height:1.5}
 .no-kids svg{width:20px;height:20px;flex-shrink:0;stroke:var(--copper);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
-/* GALERÍA */
+/* GALERÍA — WHEEL */
 #galeria{padding:80px 0 100px;background:var(--bg);text-align:center;overflow:hidden}
 #galeria .eyebrow,#galeria .script-title,#galeria .section-sub{padding:0 28px}
-.drop-stage{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;padding:0 18px;margin-top:28px;overflow:visible;position:relative}
-.drop-photo{grid-column:span 2}
-#dropP4{grid-column:2/4}
-#dropP5{grid-column:4/6}
-.drop-photo{position:relative;left:auto;width:100%;background:var(--card);border-radius:3px;padding:6px 6px 28px;box-shadow:0 8px 30px rgba(58,79,107,.12);opacity:0;will-change:transform,opacity;cursor:pointer;transition:box-shadow .3s}
-.drop-photo img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:center top;border-radius:2px;display:block;pointer-events:none}
-.drop-photo-label{position:absolute;bottom:6px;left:0;right:0;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);text-align:center;opacity:.65}
-.drop-photo.focused{z-index:10!important}
-.drop-hint{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);opacity:.5;margin-top:18px;display:block;padding:0 28px}
+.wheel-stage{position:relative;width:100%;height:min(520px,108vw);max-width:560px;margin:28px auto 0;padding:clamp(12px,3vw,40px);display:flex;align-items:center;justify-content:center}
+.wheel{position:relative;width:min(460px,90vw);height:min(460px,90vw);border-radius:50%}
+.wheel-spoke{position:absolute;inset:-2px;border-radius:50%;border:1px solid rgba(206,160,48,.28)}
+.wheel-spoke--inner{inset:min(78px,15%);border-style:dashed;opacity:.45}
+.wheel-item{
+  position:absolute;
+  --r:min(202px,41vw);
+  --angle:calc(var(--i) * (360deg / 13));
+  left:50%;top:50%;
+  width:min(152px,29vw);
+  height:min(200px,37vw);
+  margin-left:calc(min(152px,29vw) / -2);
+  margin-top:calc(min(200px,37vw) / -2);
+  transform:rotate(var(--angle)) translateY(calc(-1 * var(--r))) rotate(calc(-1 * var(--angle)));
+  border-radius:8px;overflow:hidden;
+  box-shadow:0 8px 32px rgba(58,79,107,.18),0 1px 4px rgba(58,79,107,.1);
+  opacity:0;
+}
+.wheel-item-inner{position:relative;width:100%;height:100%;cursor:zoom-in}
+.wheel-item-inner img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .6s ease}
+.wheel-item-inner:hover img{transform:scale(1.06)}
+.wheel-photo-ph{width:100%;height:100%;background:linear-gradient(160deg,var(--surface) 0%,var(--blush) 100%);display:flex;align-items:center;justify-content:center}
+.wheel-photo-ph svg{opacity:.3}
+.wheel-hub{position:absolute;width:clamp(38px,6vw,54px);height:clamp(38px,6vw,54px);color:var(--copper);opacity:.6}
 
-/* placeholder fotos sin imagen */
-.drop-photo .photo-placeholder{width:100%;aspect-ratio:2/3;background:linear-gradient(160deg,var(--surface) 0%,var(--blush) 100%);border-radius:2px;display:flex;align-items:center;justify-content:center}
-.drop-photo .photo-placeholder svg{opacity:.3}
+/* LIGHTBOX */
+#lightbox{position:fixed;inset:0;z-index:9990;display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,48px);background:rgba(30,45,66,.85);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;cursor:zoom-out}
+#lightbox.is-open{display:flex}
+#lightbox-img{max-width:min(92vw,760px);max-height:min(84vh,680px);width:auto;height:auto;object-fit:contain;border-radius:10px;box-shadow:0 28px 90px rgba(0,0,0,.55);opacity:0;transform:scale(.88)}
+#lightbox-close{position:absolute;top:clamp(14px,3vw,28px);right:clamp(14px,3vw,28px);width:48px;height:48px;border:1px solid rgba(206,160,48,.45);background:rgba(30,45,66,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:50%;color:#FAF6F0;font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .3s}
+#lightbox-close:hover{background:rgba(58,79,107,.8);transform:scale(1.08)}
 
 /* REGALOS */
 #regalos{padding:80px 28px;background:var(--dark);text-align:center;position:relative;overflow:hidden}
@@ -885,34 +903,80 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
     </div>
   </section>
 
-  <!-- GALERÍA -->
+  <!-- GALERÍA — WHEEL -->
   <section id="galeria">
     <p class="eyebrow rv">Nosotros</p>
     <h2 class="script-title rv">Nuestra Historia</h2>
     <p class="section-sub rv">Momentos que nos trajeron hasta aquí</p>
-    <div class="drop-stage" id="dropStage">
-      <div class="drop-photo" id="dropP1">
-        <div class="photo-placeholder"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#CEA030" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <span class="drop-photo-label">Nuestro primer viaje</span>
+    <div class="wheel-stage">
+      <div class="wheel" id="wheel">
+        <span class="wheel-spoke" aria-hidden="true"></span>
+        <span class="wheel-spoke wheel-spoke--inner" aria-hidden="true"></span>
+        <div class="wheel-item" style="--i:0"><div class="wheel-item-inner">
+          <img src="foto1.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:1"><div class="wheel-item-inner">
+          <img src="foto2.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:2"><div class="wheel-item-inner">
+          <img src="foto3.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:3"><div class="wheel-item-inner">
+          <img src="foto4.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:4"><div class="wheel-item-inner">
+          <img src="foto5.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:5"><div class="wheel-item-inner">
+          <img src="foto6.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:6"><div class="wheel-item-inner">
+          <img src="foto7.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:7"><div class="wheel-item-inner">
+          <img src="foto8.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:8"><div class="wheel-item-inner">
+          <img src="foto9.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:9"><div class="wheel-item-inner">
+          <img src="foto10.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:10"><div class="wheel-item-inner">
+          <img src="foto11.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:11"><div class="wheel-item-inner">
+          <img src="foto12.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
+        <div class="wheel-item" style="--i:12"><div class="wheel-item-inner">
+          <img src="foto13.jpg" alt="Romy &amp; Miguel" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="wheel-photo-ph" style="display:none"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="var(--copper)" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        </div></div>
       </div>
-      <div class="drop-photo" id="dropP2">
-        <div class="photo-placeholder"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#CEA030" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <span class="drop-photo-label">El día que dijimos sí</span>
-      </div>
-      <div class="drop-photo" id="dropP3">
-        <div class="photo-placeholder"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#CEA030" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <span class="drop-photo-label">Para siempre</span>
-      </div>
-      <div class="drop-photo" id="dropP4">
-        <div class="photo-placeholder"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#CEA030" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <span class="drop-photo-label">Juntos siempre</span>
-      </div>
-      <div class="drop-photo" id="dropP5">
-        <div class="photo-placeholder"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#CEA030" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
-        <span class="drop-photo-label">Nuestra historia</span>
+      <div class="wheel-hub" aria-hidden="true">
+        <svg viewBox="0 0 60 60" fill="none">
+          <g stroke="currentColor" stroke-width=".8" fill="none">
+            <circle cx="30" cy="30" r="18" opacity=".4"/>
+            <circle cx="30" cy="30" r="10"/>
+            <circle cx="30" cy="30" r="3" fill="currentColor"/>
+            <path d="M30 14 L30 20 M30 40 L30 46 M14 30 L20 30 M40 30 L46 30" opacity=".55"/>
+          </g>
+        </svg>
       </div>
     </div>
-    <span class="drop-hint rv" id="dropHint">Toca cada foto para enfocarla</span>
+    <p class="section-sub rv" style="margin-top:8px;font-size:11px;opacity:.45">Toca cada foto para ampliarla</p>
   </section>
 
   <!-- REGALOS -->
@@ -1040,6 +1104,10 @@ body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-w
 </button>
 <audio id="bgAudio" loop preload="auto"><source src="audio.mp3" type="audio/mpeg"></audio>
 <div id="env-flash"></div>
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button id="lightbox-close" aria-label="Cerrar">&#10005;</button>
+  <img id="lightbox-img" src="" alt="Foto de Romy &amp; Miguel">
+</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
@@ -1211,35 +1279,54 @@ function initAll(){
       scrollTrigger:{trigger:'#regalos',start:'top 85%',toggleActions:'play none none none'}});
   });
 
-  /* Galería: fotos que caen */
+  /* Galería: rueda de fotos */
   (function(){
-    const finalRotations=[-4,2,-3,3,-2];
-    const photos=[
-      {el:document.getElementById('dropP1'),rot:finalRotations[0]},
-      {el:document.getElementById('dropP2'),rot:finalRotations[1]},
-      {el:document.getElementById('dropP3'),rot:finalRotations[2]},
-      {el:document.getElementById('dropP4'),rot:finalRotations[3]},
-      {el:document.getElementById('dropP5'),rot:finalRotations[4]},
-    ];
-    ScrollTrigger.create({
-      trigger:'#dropStage',start:'top 80%',once:true,
-      onEnter(){
-        photos.forEach((p,i)=>{
-          gsap.set(p.el,{y:-180,rotation:p.rot+(i%2===0?25:-20),opacity:0});
-          gsap.to(p.el,{y:0,rotation:p.rot,opacity:1,duration:.9,ease:'power3.out',delay:i*0.12,
-            onComplete(){gsap.to(p.el,{y:-6,rotation:p.rot*.5,duration:.12,ease:'power1.out',
-              onComplete(){gsap.to(p.el,{y:0,rotation:p.rot,duration:.18,ease:'power2.inOut'});}});}
-          });
-        });
-      }
+    const prefersReduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    const wheel=document.getElementById('wheel');
+    const items=gsap.utils.toArray('.wheel-item');
+    if(!wheel||!items.length)return;
+
+    items.forEach(function(item,i){
+      gsap.fromTo(item,{opacity:0,scale:.7},{opacity:1,scale:1,duration:.55,ease:'back.out(1.6)',
+        delay:i*.05,scrollTrigger:{trigger:'#galeria',start:'top 72%',once:true}});
     });
-    photos.forEach((p,i)=>{
-      p.el.addEventListener('click',()=>{
-        const focused=p.el.classList.contains('focused');
-        photos.forEach((pp,j)=>{pp.el.classList.remove('focused');gsap.to(pp.el,{scale:1,zIndex:j+1,duration:.35,ease:'power2.out'});});
-        if(!focused){p.el.classList.add('focused');gsap.to(p.el,{scale:1.08,zIndex:10,duration:.35,ease:'back.out(1.5)'});}
+
+    if(!prefersReduced){
+      gsap.to(wheel,{rotation:360,ease:'none',
+        scrollTrigger:{trigger:'#galeria',start:'top bottom',end:'bottom top',scrub:2.2}});
+      items.forEach(function(item){
+        gsap.to(item,{rotation:-360,ease:'none',
+          scrollTrigger:{trigger:'#galeria',start:'top bottom',end:'bottom top',scrub:2.2}});
+      });
+    }
+
+    const lb=document.getElementById('lightbox');
+    const lbImg=document.getElementById('lightbox-img');
+    const lbClose=document.getElementById('lightbox-close');
+    if(!lb||!lbImg||!lbClose)return;
+
+    function openLb(src){
+      lbImg.src=src;
+      lb.classList.add('is-open');
+      gsap.fromTo(lb,{opacity:0},{opacity:1,duration:.32,ease:'power2.out'});
+      gsap.fromTo(lbImg,{opacity:0,scale:.88},{opacity:1,scale:1,duration:.42,ease:'back.out(1.4)',delay:.04});
+      document.body.style.overflow='hidden';
+    }
+    function closeLb(){
+      gsap.to(lb,{opacity:0,duration:.25,ease:'power2.in',onComplete:function(){
+        lb.classList.remove('is-open');lbImg.src='';document.body.style.overflow='';
+      }});
+    }
+
+    items.forEach(function(item){
+      item.querySelector('.wheel-item-inner').addEventListener('click',function(){
+        const img=item.querySelector('img');
+        if(img&&img.complete&&img.naturalWidth)openLb(img.src);
       });
     });
+    lb.addEventListener('click',function(e){if(e.target===lb)closeLb();});
+    lbClose.addEventListener('click',closeLb);
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('is-open'))closeLb();});
   })();
 
   const scrollHint=document.getElementById('scrollHint');
