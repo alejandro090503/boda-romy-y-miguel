@@ -219,6 +219,8 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .ld-mono span{display:inline-block}
 .ld-tag{font-family:'Italiana',serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--accent);opacity:0}
 
+.sec-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;pointer-events:none;z-index:-1}
+
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -265,7 +267,8 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- INVITACIÓN -->
-  <section class="sec rv" style="text-align:center">
+  <section class="sec rv" style="text-align:center;overflow:hidden">
+    <div class="sec-bg" style="background-image:url('botanica2.png');opacity:.45"></div>
     <span class="eyebrow">Con la gracia de Dios</span>
     <div class="orn"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <h1 class="heading">Romy &amp; Miguel</h1>
@@ -371,7 +374,8 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- ITINERARIO -->
-  <section class="sec rv" style="text-align:center">
+  <section class="sec rv" style="text-align:center;overflow:hidden">
+    <div class="sec-bg" style="background-image:url('botanica1.png');opacity:.14"></div>
     <span class="eyebrow">Programa del Día</span>
     <h2 class="heading-sm">Itinerario</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
@@ -468,7 +472,8 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
   </section>
 
   <!-- RSVP -->
-  <section class="sec rv" style="text-align:center">
+  <section class="sec rv" style="text-align:center;overflow:hidden">
+    <div class="sec-bg" style="background-image:url('botanica3.png');opacity:.18;background-position:bottom center;background-size:75%"></div>
     <span class="eyebrow">Confirmación</span>
     <h2 class="heading-sm">¿Nos acompañas?</h2>
     <div class="orn" style="margin-top:16px;margin-bottom:24px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
