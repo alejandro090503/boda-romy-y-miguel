@@ -493,6 +493,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
           <option value="2">2 personas</option>
           <option value="3">3 personas</option>
           <option value="4">4 personas</option>
+          <option value="5">5 personas</option>
         </select>
       </div>
       <button class="btn-wa" id="btnEnviar" onclick="sendRsvpWa()" style="margin-top:10px">
@@ -640,6 +641,13 @@ function initMain(){
     gsap.fromTo(el,{opacity:0,y:28},{opacity:1,y:0,duration:.85,ease:'power2.out',
       scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
   });
+
+  /* Pre-seleccionar pases desde URL ?pases=N */
+  const urlPases=new URLSearchParams(window.location.search).get('pases');
+  if(urlPases){
+    const sel=document.getElementById('rsvpPases');
+    if(sel){sel.value=urlPases;}
+  }
 
   /* RSVP */
   window.rsvpChoice='';
