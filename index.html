@@ -121,12 +121,9 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .fam-padrinos::before{content:'';position:absolute;inset:8px;border:1px solid var(--border-light);pointer-events:none}
 
 /* ── UBICACION ── */
-.loc-tabs{display:flex;gap:0;background:rgba(122,150,104,.08);border:1px solid var(--border);border-radius:50px;padding:4px;margin:22px auto 24px;max-width:340px}
-.loc-tab{flex:1;font-family:'Italiana',serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--text);border:none;background:transparent;padding:12px 8px;border-radius:50px;cursor:pointer;transition:all .3s;opacity:.55}
-.loc-tab.active{background:var(--dark);color:var(--gold-light);opacity:1}
-.loc-panel{display:none}
-.loc-panel.active{display:block;animation:fadeUp .4s ease both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.loc-venue-lbl{font-family:'Italiana',serif;font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;opacity:.8}
+.loc-divider{height:14px}
 .loc-venue{font-family:'Great Vibes',cursive;font-size:38px;color:var(--dark);text-align:center;line-height:1.1;margin-bottom:18px}
 .loc-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(122,150,104,.12);justify-content:center}
 .loc-row:last-of-type{border-bottom:none}
@@ -340,56 +337,36 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <span class="eyebrow">Dónde Celebramos</span>
     <h2 class="heading-sm">Ubicación</h2>
     <p class="sub" style="margin-top:6px">Piura, Perú</p>
-    <div class="loc-tabs rv" id="locTabs">
-      <button class="loc-tab active" data-panel="religiosa">Ceremonia</button>
-      <button class="loc-tab" data-panel="recepcion">Recepción</button>
-    </div>
 
-    <div class="loc-panel active" id="panel-religiosa">
-      <div class="card rv" style="max-width:380px;margin:0 auto">
-        <div class="loc-venue">Iglesia Ntra. Sra. del Carmen</div>
-        <div class="loc-row">
-          <svg class="loc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div class="loc-txt"><strong>11:00 AM</strong> · Ceremonia Religiosa</div>
-        </div>
-        <div class="loc-row">
-          <svg class="loc-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div class="loc-txt">Piura, Perú</div>
-        </div>
-        <div class="map-wrap">
-          <iframe title="Iglesia Nuestra Señora del Carmen — Piura" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-            src="https://maps.google.com/maps?q=-5.1930443,-80.625634&output=embed&z=17"></iframe>
-        </div>
-        <a href="https://maps.app.goo.gl/XSuXCSmymhiagXEeA" target="_blank" rel="noopener" class="btn-map">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Cómo llegar
-        </a>
+    <div class="card rv" style="max-width:380px;margin:24px auto 0">
+      <span class="loc-venue-lbl">Ceremonia Religiosa</span>
+      <div class="loc-venue">Iglesia Ntra. Sra. del Carmen</div>
+      <div class="loc-row">
+        <svg class="loc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="loc-txt"><strong>11:00 AM</strong> · Ceremonia Religiosa</div>
       </div>
+      <a href="https://maps.app.goo.gl/XSuXCSmymhiagXEeA" target="_blank" rel="noopener" class="btn-map" style="margin-top:20px">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Cómo llegar
+      </a>
     </div>
 
-    <div class="loc-panel" id="panel-recepcion">
-      <div class="card rv" style="max-width:380px;margin:0 auto">
-        <div class="loc-venue">Villa Palmeras</div>
-        <div class="loc-row">
-          <svg class="loc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div class="loc-txt"><strong>1:00 PM</strong> · Recepción &amp; Festejo</div>
-        </div>
-        <div class="loc-row">
-          <svg class="loc-icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <div class="loc-txt">Piura, Perú</div>
-        </div>
-        <div class="map-wrap">
-          <iframe title="Villa Palmeras — Piura" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"
-            src="https://maps.google.com/maps?q=-5.1594338,-80.6177203&output=embed&z=17"></iframe>
-        </div>
-        <a href="https://maps.app.goo.gl/rZh8PuN98B3sCerL8" target="_blank" rel="noopener" class="btn-map">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Cómo llegar
-        </a>
+    <div class="loc-divider rv"></div>
+
+    <div class="card rv" style="max-width:380px;margin:0 auto">
+      <span class="loc-venue-lbl">Recepción &amp; Festejo</span>
+      <div class="loc-venue">Villa Palmeras</div>
+      <div class="loc-row">
+        <svg class="loc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="loc-txt"><strong>1:00 PM</strong> · Recepción &amp; Festejo</div>
       </div>
+      <a href="https://maps.app.goo.gl/rZh8PuN98B3sCerL8" target="_blank" rel="noopener" class="btn-map" style="margin-top:20px">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Cómo llegar
+      </a>
     </div>
 
-    <div class="cal-row rv">
+    <div class="cal-row rv" style="margin-top:22px">
       <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Romy+%26+Miguel&dates=20260926T160000Z/20260927T040000Z&details=Ceremonia+Religiosa+11%3A00+AM+%7C+Recepci%C3%B3n+1%3A00+PM&location=Piura%2C+Per%C3%BA" target="_blank" rel="noopener" class="btn-cal">
         <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.89 4 3 4.9 3 6v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM7 11h5v5H7z"/></svg>
         Guardar en Calendario
@@ -666,20 +643,6 @@ function initMain(){
     gsap.fromTo(el,{opacity:0,y:28},{opacity:1,y:0,duration:.85,ease:'power2.out',
       scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
   });
-
-  /* Location tabs */
-  const locTabs=document.getElementById('locTabs');
-  if(locTabs){
-    locTabs.querySelectorAll('.loc-tab').forEach(tab=>{
-      tab.addEventListener('click',()=>{
-        locTabs.querySelectorAll('.loc-tab').forEach(t=>t.classList.remove('active'));
-        tab.classList.add('active');
-        document.querySelectorAll('.loc-panel').forEach(p=>p.classList.remove('active'));
-        const target=document.getElementById('panel-'+tab.dataset.panel);
-        if(target)target.classList.add('active');
-      });
-    });
-  }
 
   /* RSVP */
   window.rsvpChoice='';
