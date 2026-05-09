@@ -475,26 +475,13 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <div class="orn" style="margin-top:16px;margin-bottom:24px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <span class="rsvp-deadline">Confirma antes del 1 de Septiembre · 2026</span>
     <div class="card rv" style="max-width:380px;margin:0 auto;text-align:left">
-      <div class="rsvp-field">
-        <label>Tu nombre completo</label>
-        <input type="text" id="rsvpName" placeholder="Nombre y apellido" autocomplete="name">
-      </div>
+      <div id="namesContainer"></div>
       <div class="rsvp-field">
         <label>¿Asistirás?</label>
         <div class="rsvp-toggle">
           <button class="rsvp-toggle-btn" id="btnYes" onclick="selectRsvp('yes')">¡Con mucho gusto!</button>
           <button class="rsvp-toggle-btn" id="btnNo" onclick="selectRsvp('no')">No podré asistir</button>
         </div>
-      </div>
-      <div class="rsvp-field" id="pasesField" style="display:none">
-        <label>¿Cuántos pases confirmas?</label>
-        <select id="rsvpPases">
-          <option value="1">1 persona</option>
-          <option value="2">2 personas</option>
-          <option value="3">3 personas</option>
-          <option value="4">4 personas</option>
-          <option value="5">5 personas</option>
-        </select>
       </div>
       <button class="btn-wa" id="btnEnviar" onclick="sendRsvpWa()" style="margin-top:10px">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.997 2C6.477 2 2 6.477 2 12c0 1.99.589 3.845 1.6 5.4L2 22l4.73-1.578A9.956 9.956 0 0 0 12 22c5.52 0 10-4.477 10-10S17.52 2 11.997 2z"/></svg>
@@ -642,29 +629,49 @@ function initMain(){
       scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}});
   });
 
-  /* Pre-seleccionar pases desde URL ?pases=N */
-  const urlPases=new URLSearchParams(window.location.search).get('pases');
-  if(urlPases){
-    const sel=document.getElementById('rsvpPases');
-    if(sel){sel.value=urlPases;}
-  }
+  /* RSVP — campos dinámicos por pases */
+  const urlPases=parseInt(new URLSearchParams(window.location.search).get('pases'))||1;
 
-  /* RSVP */
+  function renderNameFields(count){
+    const c=document.getElementById('namesContainer');
+    c.innerHTML='';
+    for(let i=1;i<=count;i++){
+      const div=document.createElement('div');
+      div.className='rsvp-field';
+      const lbl=document.createElement('label');
+      lbl.textContent=i===1?'Tu nombre completo':'Acompañante '+( i-1);
+      const inp=document.createElement('input');
+      inp.type='text';
+      inp.className='rsvp-name-input';
+      inp.placeholder='Nombre y apellido';
+      inp.autocomplete='name';
+      div.appendChild(lbl);
+      div.appendChild(inp);
+      c.appendChild(div);
+    }
+  }
+  renderNameFields(urlPases);
+
   window.rsvpChoice='';
   window.selectRsvp=function(choice){
     window.rsvpChoice=choice;
     document.getElementById('btnYes').className='rsvp-toggle-btn'+(choice==='yes'?' selected-yes':'');
     document.getElementById('btnNo').className='rsvp-toggle-btn'+(choice==='no'?' selected-no':'');
-    document.getElementById('pasesField').style.display=(choice==='yes'?'block':'none');
   };
   window.sendRsvpWa=function(){
-    const name=document.getElementById('rsvpName').value.trim();
-    if(!name){document.getElementById('rsvpName').focus();return;}
+    const inputs=document.querySelectorAll('.rsvp-name-input');
+    const first=inputs[0]?.value.trim();
+    if(!first){inputs[0]?.focus();return;}
     if(!window.rsvpChoice){document.getElementById('btnYes').focus();return;}
-    const pases=window.rsvpChoice==='yes'?document.getElementById('rsvpPases').value:'0';
-    let msg=`Hola, soy ${name}.\n`;
-    if(window.rsvpChoice==='yes')msg+=`Confirmo mi asistencia a la boda de Romy & Miguel 🌿\nPases: ${pases}`;
-    else msg+=`Lamentablemente no podré asistir a la boda de Romy & Miguel.`;
+    const names=Array.from(inputs).map(i=>i.value.trim()).filter(n=>n);
+    let msg='Hola,\n';
+    if(window.rsvpChoice==='yes'){
+      msg+=`Confirmamos asistencia a la boda de Romy & Miguel 🌿\n`;
+      names.forEach((n,i)=>{msg+=`${i+1}. ${n}\n`;});
+      msg+=`Pases confirmados: ${urlPases}`;
+    } else {
+      msg+=`Soy ${first}. Lamentablemente no podré asistir a la boda de Romy & Miguel.`;
+    }
     window.open(`https://wa.me/51944113478?text=${encodeURIComponent(msg)}`,'_blank');
   };
 
