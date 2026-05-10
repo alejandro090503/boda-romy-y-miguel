@@ -63,7 +63,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .orn-diamond-sm{width:4px;height:4px;background:var(--gold);transform:rotate(45deg);flex-shrink:0;opacity:.45;margin:0 2px}
 
 /* ── TYPOGRAPHY ── */
-.eyebrow{font-family:'Italiana',serif;font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:14px;display:block;opacity:.85}
+.eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:18px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:14px;display:block}
 .heading{font-family:'Great Vibes',cursive;font-size:56px;color:var(--dark);text-align:center;line-height:1.1;margin-bottom:6px}
 .heading-sm{font-family:'Great Vibes',cursive;font-size:42px;color:var(--dark);text-align:center;line-height:1.1}
 .sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:var(--accent);text-align:center;margin-bottom:0;opacity:.85;line-height:1.65}
@@ -104,7 +104,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 .cd-unit{display:flex;flex-direction:column;align-items:center;padding:0 clamp(10px,4vw,22px)}
 .cd-value{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,11vw,54px);font-weight:400;color:var(--dark);line-height:1;letter-spacing:-1px;transition:transform .15s,opacity .15s}
 .cd-value.flip{transform:translateY(-8px);opacity:0}
-.cd-lbl{font-family:'Italiana',serif;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.8;margin-top:6px}
+.cd-lbl{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:6px}
 .cd-sep{display:flex;flex-direction:column;gap:6px;padding-bottom:20px;opacity:.3}
 .cd-dot{width:3px;height:3px;background:var(--gold);border-radius:50%}
 
@@ -122,7 +122,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
 
 /* ── UBICACION ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.loc-venue-lbl{font-family:'Italiana',serif;font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px;opacity:.8}
+.loc-venue-lbl{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:700;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:10px}
 .loc-divider{height:14px}
 .loc-venue{font-family:'Great Vibes',cursive;font-size:38px;color:var(--dark);text-align:center;line-height:1.1;margin-bottom:18px}
 .loc-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(122,150,104,.12);justify-content:center}
@@ -338,7 +338,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
       <div class="loc-venue">Iglesia Ntra. Sra. del Carmen</div>
       <div class="loc-row">
         <svg class="loc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <div class="loc-txt"><strong>11:00 AM</strong> · Ceremonia Religiosa</div>
+        <div class="loc-txt"><strong>11:00 am.</strong> · Ceremonia Religiosa</div>
       </div>
       <a href="https://maps.app.goo.gl/XSuXCSmymhiagXEeA" target="_blank" rel="noopener" class="btn-map" style="margin-top:20px">
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -353,7 +353,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
       <div class="loc-venue">Villa Palmeras</div>
       <div class="loc-row">
         <svg class="loc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <div class="loc-txt"><strong>1:00 PM</strong> · Recepción &amp; Festejo</div>
+        <div class="loc-txt"><strong>1:00 pm.</strong> · Recepción &amp; Festejo</div>
       </div>
       <a href="https://maps.app.goo.gl/rZh8PuN98B3sCerL8" target="_blank" rel="noopener" class="btn-map" style="margin-top:20px">
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -376,9 +376,9 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <h2 class="heading-sm">Itinerario</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <div class="itin-list">
-      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">11:00 am</div><div class="itin-ev">Ceremonia Religiosa</div></div>
-      <div class="itin-item rv"><div class="itin-dot sage"></div><div class="itin-time">1:00 pm</div><div class="itin-ev">Recepción y Cóctel</div></div>
-      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">1:30 pm</div><div class="itin-ev">Vals y Primer Baile</div></div>
+      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">11:00 am.</div><div class="itin-ev">Ceremonia Religiosa</div></div>
+      <div class="itin-item rv"><div class="itin-dot sage"></div><div class="itin-time">1:00 pm.</div><div class="itin-ev">Recepción y Cóctel</div></div>
+      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">1:30 pm.</div><div class="itin-ev">Vals y Primer Baile</div></div>
       <div class="itin-item rv"><div class="itin-dot sage"></div><div class="itin-time">¡Fiesta!</div><div class="itin-ev">Música · Baile · Celebración</div></div>
     </div>
   </section>
