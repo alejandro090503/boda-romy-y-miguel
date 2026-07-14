@@ -338,7 +338,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
       <div class="loc-venue">Iglesia Ntra. Sra. del Carmen</div>
       <div class="loc-row">
         <svg class="loc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <div class="loc-txt"><strong>11:00 a.m.</strong> · Ceremonia Religiosa</div>
+        <div class="loc-txt"><strong>12:00 p.m.</strong> · Ceremonia Religiosa</div>
       </div>
       <a href="https://maps.app.goo.gl/XSuXCSmymhiagXEeA" target="_blank" rel="noopener" class="btn-map" style="margin-top:20px">
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -353,7 +353,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
       <div class="loc-venue">Villa Palmeras</div>
       <div class="loc-row">
         <svg class="loc-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <div class="loc-txt"><strong>1:00 p.m.</strong> · Recepción y Festejo</div>
+        <div class="loc-txt"><strong>1:30 p.m.</strong> · Recepción y Festejo</div>
       </div>
       <a href="https://maps.app.goo.gl/rZh8PuN98B3sCerL8" target="_blank" rel="noopener" class="btn-map" style="margin-top:20px">
         <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
@@ -362,7 +362,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     </div>
 
     <div class="cal-row rv" style="margin-top:22px">
-      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Romy+%26+Miguel&dates=20260926T160000Z/20260927T040000Z&details=Ceremonia+Religiosa+11%3A00+AM+%7C+Recepci%C3%B3n+1%3A00+PM&location=Piura%2C+Per%C3%BA" target="_blank" rel="noopener" class="btn-cal">
+      <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda+Romy+%26+Miguel&dates=20260926T170000Z/20260927T040000Z&details=Ceremonia+Religiosa+12%3A00+PM+%7C+Recepci%C3%B3n+1%3A30+PM&location=Piura%2C+Per%C3%BA" target="_blank" rel="noopener" class="btn-cal">
         <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5C3.89 4 3 4.9 3 6v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM7 11h5v5H7z"/></svg>
         Guardar en Calendario
       </a>
@@ -376,9 +376,9 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <h2 class="heading-sm">Itinerario</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
     <div class="itin-list">
-      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">11:00 a.m.</div><div class="itin-ev">Ceremonia Religiosa</div></div>
-      <div class="itin-item rv"><div class="itin-dot sage"></div><div class="itin-time">1:00 p.m.</div><div class="itin-ev">Recepción y Cóctel</div></div>
-      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">1:30 p.m.</div><div class="itin-ev">Vals y Primer Baile</div></div>
+      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">12:00 p.m.</div><div class="itin-ev">Ceremonia Religiosa</div></div>
+      <div class="itin-item rv"><div class="itin-dot sage"></div><div class="itin-time">1:30 p.m.</div><div class="itin-ev">Recepción y Cóctel</div></div>
+      <div class="itin-item rv"><div class="itin-dot"></div><div class="itin-time">2:00 p.m.</div><div class="itin-ev">Vals y Primer Baile</div></div>
       <div class="itin-item rv"><div class="itin-dot sage"></div><div class="itin-time">¡Fiesta!</div><div class="itin-ev">Música · Baile · Celebración</div></div>
     </div>
   </section>
@@ -585,7 +585,7 @@ function initMain(){
   launchPetals();
 
   /* Countdown */
-  const target=new Date('2026-09-26T11:00:00-05:00');
+  const target=new Date('2026-09-26T12:00:00-05:00');
   function updateCd(){
     const diff=target-Date.now();
     if(diff<=0)return;
