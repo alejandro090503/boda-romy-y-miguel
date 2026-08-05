@@ -388,7 +388,7 @@ body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',ser
     <span class="eyebrow">Código de Vestimenta</span>
     <h2 class="heading-sm">Formal Elegante</h2>
     <div class="orn" style="margin-top:16px"><div class="orn-line"></div><div class="orn-diamond-sm"></div><div class="orn-diamond"></div><div class="orn-diamond-sm"></div><div class="orn-line"></div></div>
-    <p class="dc-text" style="margin-top:22px">¡Nos encantaría verte en tonos tierra y florales!</p>
+    <p class="dc-text" style="margin-top:22px">¡Nos encantará verte con el color que elijas!</p>
     <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:var(--accent);text-align:center;line-height:1.7;margin-bottom:24px;opacity:.85">Por favor evita vestir de blanco, rojo o beige —<br>esos colores son exclusivos de Romy y Miguel.</p>
     <div class="dc-cols rv">
       <div class="dc-col">
@@ -621,6 +621,8 @@ function initMain(){
   const note=document.getElementById('rsvpPasesNote');
   if(note){const p=urlPases===1?'1 pase reservado para ti':`${urlPases} pases reservados para ti`;note.textContent='✦ '+p+' ✦';}
 
+  const guestNames=["Alejandra Palomino","Alicia Burneo","Andrea Posavac","Antonio Matute","Atilio Falla","Betty Adriana y Martín","Branko Posavac y Señora","Calin Hurtado","Carito Rojas","Carlos Enrique Morales Castillo","Carlos Enrique Morales Falla","Carolina Burneo y Nicolas Vassallo","Cinthia Atoche","Cinthia Tirado Morales","Cinthya Merino","Cinthya Schaeffer y Carlos","Daniel Sotillo y Señora","Daniela Ruiz Morales","Eduardo Arellano","Eduardo Cespedes","Eloy Falla","Erica Fernandez y Antonio","Eva Flores","Fabiola Seclen","Felipe Burneo Posavac y Stefano","Felipe Burneo Temple y Señora","Genesis Rosales","Gian Carlo Becerra","Gian Franco Becerra","Gloria Pardo García","Ivan Perez","James Cuyatti","Jhonatan Palacios","Joao Salas","Jose Santos Agusto Hurtado","Julio Ramos","Juvissa Falla","Leonor Burneo","Lia Raquel Falla","Linda Diana Morales Falla","María del Pilar Morales","Maria Gloria Posavac Pardo","María Nicholson","Maria Trinidad Vassallo Falla","Mariana Posavac Pardo","Mario Segura","Marjorie Nole y Percy","Matías Matute Morales","Matias Palma y Señora","Mauricio Zuñiga y Señora","Mauro Mendieta","Miguel Francisco Burneo Olaechea y Señora","Milena Atoche","Paul Cuyatti","Pedro Díaz","Percy y esposa","Pierina Becerra","Pierre Gutierrez","Pina Burneo y Eduardo Montagne","Renzo Riofrio y Señora","Ruty Valle y José","Solange Palacios","Susana Seminario","Valeria Ruiz Morales","Yanira Palacios","Yasna Hernandez","Yasna Posavac Pardo","Yolanda Falla de Morales","Zlatko Posavac y Señora","Zvonko Posavac"];
+
   function renderNameFields(count){
     const c=document.getElementById('namesContainer');
     c.innerHTML='';
@@ -628,14 +630,25 @@ function initMain(){
       const div=document.createElement('div');
       div.className='rsvp-field';
       const lbl=document.createElement('label');
-      lbl.textContent=i===1?'Tu nombre completo':'Acompañante '+( i-1);
-      const inp=document.createElement('input');
-      inp.type='text';
-      inp.className='rsvp-name-input';
-      inp.placeholder='Nombre y apellido';
-      inp.autocomplete='name';
-      div.appendChild(lbl);
-      div.appendChild(inp);
+      lbl.textContent=i===1?'Tu nombre':'Acompañante '+(i-1);
+      if(i===1){
+        const sel=document.createElement('select');
+        sel.className='rsvp-name-input';
+        const defOpt=document.createElement('option');
+        defOpt.value='';defOpt.textContent='Selecciona tu nombre';defOpt.disabled=true;defOpt.selected=true;
+        sel.appendChild(defOpt);
+        guestNames.forEach(n=>{const o=document.createElement('option');o.value=n;o.textContent=n;sel.appendChild(o);});
+        div.appendChild(lbl);
+        div.appendChild(sel);
+      } else {
+        const inp=document.createElement('input');
+        inp.type='text';
+        inp.className='rsvp-name-input';
+        inp.placeholder='Nombre y apellido';
+        inp.autocomplete='name';
+        div.appendChild(lbl);
+        div.appendChild(inp);
+      }
       c.appendChild(div);
     }
   }
